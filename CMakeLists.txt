@@ -57,6 +57,9 @@ set(INSTALL_INCLUDES "${CMAKE_INSTALL_PREFIX}/include")
 set(INSTALL_LIBS     "${CMAKE_INSTALL_PREFIX}/lib")
 set(INSTALL_BINARIES "${CMAKE_INSTALL_PREFIX}/bin")
 
+# Add preprocessor definitions
+add_definitions(-D_WIN32_WINNT=0x0A00) # Windows 10, in my case
+
 # Assign Main as the startup project of the Solution
 set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${EXEC_NAME})
 
