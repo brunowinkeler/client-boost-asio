@@ -8,7 +8,7 @@ using std::string;
 using std::cout;
 using std::endl;
 
-int main() 
+int main()
 {
 	boost::asio::io_service io_service;
 	tcp::socket socket(io_service);
@@ -24,10 +24,10 @@ int main()
 		cout << "It was not possible to connect to server.\n";
 	}
 
+	boost::system::error_code error;
 	if (is_connected)
 	{
 		const string msg = "Hello from Client!\n";
-		boost::system::error_code error;
 		boost::asio::write(socket, boost::asio::buffer(msg), error);
 
 		if (!error) {
@@ -44,12 +44,12 @@ int main()
 	//boost::asio::streambuf receive_buffer;
 	//boost::asio::read(socket, receive_buffer, boost::asio::transfer_all(), error);
 
-	//if( error && error != boost::asio::error::eof ) {
-	//  cout << "receive failed: " << error.message() << endl;
+	//if (error && error != boost::asio::error::eof) {
+	//	cout << "receive failed: " << error.message() << endl;
 	//}
 	//else {
-	//  const char* data = boost::asio::buffer_cast<const char*>(receive_buffer.data());
-	//  cout << data << endl;
+	//	const char* data = boost::asio::buffer_cast<const char*>(receive_buffer.data());
+	//	cout << data << endl;
 	//}
 
 	getchar();
